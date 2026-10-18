@@ -1,8 +1,6 @@
 package ee.fujitsu.delivery.persistence;
 
-import java.math.BigDecimal;
 import java.time.Instant;
-
 import ee.fujitsu.delivery.domain.City;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

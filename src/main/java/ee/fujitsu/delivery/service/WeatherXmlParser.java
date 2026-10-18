@@ -1,7 +1,6 @@
 package ee.fujitsu.delivery.service;
 
 import java.io.ByteArrayInputStream;
-import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.ArrayList;

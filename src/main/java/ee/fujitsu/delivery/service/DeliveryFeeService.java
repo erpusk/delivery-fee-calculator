@@ -2,7 +2,11 @@ package ee.fujitsu.delivery.service;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import ee.fujitsu.delivery.domain.City;
 import ee.fujitsu.delivery.domain.VehicleType;
 import ee.fujitsu.delivery.domain.WeatherFeeRule;
@@ -34,7 +38,7 @@ public class DeliveryFeeService {
 
         WeatherObservation observation = weatherObservationRepository
             .findFirstByCityAndObservedAtLessThanEqualOrderByObservedAtDesc(city, observationTime)
-            .orElseThrow(() -> new IllegalStateException("No weather observation is available for " + city.displayName()));
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No weather observation is available for " + city.displayName()));
 
         Double temperature = observation.getAirTemperature();
         if (temperature == null) throw new IllegalStateException("Air temperature is unavailable");
@@ -78,7 +82,10 @@ public class DeliveryFeeService {
         if (rule == null) return total;
 
         if (rule.forbidden()) {
-            throw new IllegalStateException("Usage of selected vehicle type is forbidden");
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "Usage of selected vehicle type is forbidden"
+            );
         }
 
         return total.add(rule.amount());
