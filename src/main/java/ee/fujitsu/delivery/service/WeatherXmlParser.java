@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.XMLConstants;
@@ -18,7 +17,6 @@ import ee.fujitsu.delivery.persistence.WeatherObservation;
 
 @Component
 public class WeatherXmlParser {
-    private static final ZoneId ESTONIA = ZoneId.of("Europe/Tallinn");
 
     public List<WeatherObservation> parse(String xml) {
         try {
