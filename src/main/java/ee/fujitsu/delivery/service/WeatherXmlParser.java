@@ -73,12 +73,12 @@ public class WeatherXmlParser {
         return value.isEmpty() ? null : value;
     }
 
-    private BigDecimal decimal(String value) {
+    private Double decimal(String value) {
         if (value == null || value.isBlank() || value.equals("-")) {
             return null;
         }
 
-        return new BigDecimal(value.replace(',', '.'));
+        return Double.valueOf(value.replace(',', '.'));
     }
 
     private Instant parseTimestamp(String value) {

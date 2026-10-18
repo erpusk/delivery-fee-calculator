@@ -31,8 +31,8 @@ public class WeatherObservation {
     @Column(nullable = false)
     private String wmoCode;
 
-    private BigDecimal airTemperature;
-    private BigDecimal windSpeed;
+    private Double airTemperature;
+    private Double windSpeed;
     private String phenomenon;
 
     @Column(nullable = false)
@@ -41,7 +41,7 @@ public class WeatherObservation {
     protected WeatherObservation() {
     }
 
-    public WeatherObservation(City city, String stationName, String wmoCode, BigDecimal airTemperature, BigDecimal windSpeed, String phenomenon, Instant observedAt) {
+    public WeatherObservation(City city, String stationName, String wmoCode, Double airTemperature, Double windSpeed, String phenomenon, Instant observedAt) {
         this.city = city;
         this.stationName = stationName;
         this.wmoCode = wmoCode;
@@ -67,11 +67,11 @@ public class WeatherObservation {
         return wmoCode;
     }
 
-    public BigDecimal getAirTemperature() {
+    public Double getAirTemperature() {
         return airTemperature;
     }
 
-    public BigDecimal getWindSpeed() {
+    public Double getWindSpeed() {
         return windSpeed;
     }
 
