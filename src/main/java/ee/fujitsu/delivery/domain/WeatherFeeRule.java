@@ -3,11 +3,10 @@ package ee.fujitsu.delivery.domain;
 import java.math.BigDecimal;
 
 public record WeatherFeeRule (
-    VehicleType vehicleType,
-    Condition condition,
-    BigDecimal amount,
-    boolean forbidden
-) {
+        VehicleType vehicleType,
+        Condition condition,
+        BigDecimal amount,
+        boolean forbidden) {
     public enum Condition {
         TEMPERATURE_BELOW_MINUS_10,
         TEMPERATURE_MINUS_10_TO_0,

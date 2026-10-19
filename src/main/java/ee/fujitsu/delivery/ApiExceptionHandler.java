@@ -12,8 +12,15 @@ public class ApiExceptionHandler {
     
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<Map<String, String>> handle(
-        ResponseStatusException e) {
-            return ResponseEntity.status(e.getStatusCode())
-                .body(Map.of("message", e.getReason()));
-        }
+            ResponseStatusException e) {
+        return ResponseEntity.status(e.getStatusCode())
+            .body(Map.of("message", e.getReason()));
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> handle(
+            IllegalArgumentException e) {
+        return ResponseEntity.badRequest()
+            .body(Map.of("message", e.getMessage()));
+    }
 }
