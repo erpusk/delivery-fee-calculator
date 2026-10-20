@@ -1,11 +1,13 @@
 package ee.fujitsu.delivery.domain;
 
 import java.math.BigDecimal;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 
 public record WeatherFeeRule (
-        VehicleType vehicleType,
-        Condition condition,
-        BigDecimal amount,
+        @NotNull VehicleType vehicleType,
+        @NotNull Condition condition,
+        @NotNull @DecimalMin("0.00") BigDecimal amount,
         boolean forbidden) {
     public enum Condition {
         TEMPERATURE_BELOW_MINUS_10,

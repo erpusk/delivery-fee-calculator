@@ -134,7 +134,9 @@ class DeliveryFeeServiceTest {
         Instant requestedAt = now.minus(Duration.ofMinutes(15));
         Instant previousObservedAt = now.minus(Duration.ofMinutes(30));
 
-        WeatherObservation previousObservation = new WeatherObservation(
+        givenWeather(5.0, 1.0, "Clear"); // add an observation with +0 EUR fee
+
+        WeatherObservation previousObservation = new WeatherObservation( // add an observation with +2 EUR fee
             City.TALLINN, 
             "Tallinn-Harku",
             "26038", 
