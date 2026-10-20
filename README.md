@@ -18,6 +18,8 @@ To run the tests:
 .\mvnw.cmd test
 ```
 
+The tests are in src/test/java/ee/fujitsu/delivery/service/DeliveryFeeServiceTest.java and cover base fees, weather fees, forbidden conditions, and historical weather selection.
+
 ## Calculate a fee
 
 The fee endpoint is `GET /api/delivery-fees`. It needs parameters city and vehicle type. The optional `dateTime` parameter is a local Tallinn date and time in `YYYY-MM-DDTHH:mm:ss` format. For example:
